@@ -230,7 +230,6 @@
 								}
 								console.log('this.showAreaListCCC:' + JSON.stringify(this.showAreaList));
 								//处理区县字段
-								
 							}
 						}
 					} else {
