@@ -1,0 +1,110 @@
+//欲练此功，必先自宫：https://uniapp.dcloud.io/collocation/pages
+{
+	"easycom": {
+		"^u-(.*)": "@/third-ui/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, 
+		{
+			"path": "pages/more/index",
+			"style": {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/more/modifyPswd",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/more/privace",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/more/about",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		//更新相关
+		{
+			"path": "uni_modules/uni-upgrade-center-app/pages/upgrade-popup",
+			"style": {
+				"disableScroll": true,
+				"app-plus": {
+					"backgroundColorTop": "transparent",
+					"background": "transparent",
+					"titleNView": false,
+					"scrollIndicator": false,
+					"popGesture": "none",
+					"animationType": "fade-in",
+					"animationDuration": 200
+				}
+			}
+		}, {
+			"path": "pages/more/company",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/more/headImg",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}
+	    ,{
+            "path" : "pages/smsCheck/index",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "custom", // 隐藏系统导航栏
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	//配置项如果有注释，注释内容为官网文档中的 平台差异说明
+	"globalStyle": {
+		//"navigationStyle":"custom",//屏蔽原生导航栏，使用自定义导航栏NavBar https://uniapp.dcloud.io/collocation/pages?id=customnav   https://ask.dcloud.net.cn/article/34921
+		"pageOrientation": "portrait",
+		"navigationBarTitleText": "",
+		"navigationBarTextStyle": "white",
+		"navigationBarBackgroundColor": "#00CFBD",
+		"backgroundColor": "#F8F8F8", //窗口的背景色 微信小程序、百度小程序、字节跳动小程序
+		"backgroundColorTop": "#F4F5F6", //顶部窗口的背景色（bounce回弹区域） 仅 iOS 平台
+		"backgroundColorBottom": "#F4F5F6", //底部窗口的背景色（bounce回弹区域） 仅 iOS 平台
+		"h5": { //设置编译到 H5 平台的特定样式  H5
+			"maxWidth": 1190, //单位px，当浏览器可见区域宽度大于maxWidth时，两侧留白，当小于等于maxWidth时，页面铺满；不同页面支持配置不同的maxWidth；maxWidth = leftWindow(可选)+page(页面主体)+rightWindow(可选)   
+			"navigationBarTextStyle": "white", //导航栏标题颜色及状态栏前景颜色，仅支持 black/white	
+			"navigationBarBackgroundColor": "#00CFBD"
+		},
+		"usingComponents": {
+			"ly-tree-node": "/components/ly-tree/ly-tree-node"
+		}
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#007AFF",
+		"borderStyle": "black",
+		"backgroundColor": "#F8F8F8",
+		"list": [{
+				"pagePath": "pages/more/index"
+			}
+		]
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"dependencies": {
+		"crypto-js": "^4.0.0",
+		"js-audio-recorder": "^1.0.7",
+		"moment": "^2.29.1",
+		"vconsole": "^3.7.0",
+		"vue-jsonp": "^2.0.0"
+	}
+}

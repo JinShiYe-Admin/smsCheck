@@ -1,0 +1,151 @@
+{
+    "name" : "smsCheck",
+    "appid" : "__UNI__090050C",
+    "description" : "",
+    "versionName" : "1.0.0",
+    "versionCode" : 100,
+    "transformPx" : false,
+    "networkTimeout" : {
+        /*全局网络请求超时时间*/
+        "request" : 10000,
+        /*uni.request 的超时时间，单位毫秒。*/
+        "connectSocket" : 60000,
+        /*uni.connectSocket 的超时时间，单位毫秒。*/
+        "uploadFile" : 30000,
+        /*uni.uploadFile 的超时时间，单位毫秒。*/
+        "downloadFile" : 30000 /*uni.downloadFile 的超时时间，单位毫秒。*/
+    },
+    /* 5+App特有相关 */
+    "app-plus" : {
+        "usingComponents" : true,
+        "nvueStyleCompiler" : "uni-app",
+        "compilerVersion" : 3,
+        "splashscreen" : {
+            "alwaysShowBeforeRender" : true,
+            "waiting" : true,
+            "autoclose" : true,
+            "delay" : 0
+        },
+        /* 模块配置 */
+        "modules" : {
+            "VideoPlayer" : {},
+            "Webview-x5" : {},
+            "Geolocation" : {}
+        },
+        /* 应用发布信息 */
+        "distribute" : {
+            /* android打包配置 */
+            "android" : {
+                "permissions" : [
+                    "<uses-feature android:name=\"android.hardware.camera\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+                    "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+                ],
+                "permissionExternalStorage" : {
+                    "request" : "always",
+                    "prompt" : "应用保存运行状态等信息，需要获取读写手机存储（系统提示为访问设备上的照片、媒体内容和文件）权限，请允许。"
+                },
+                "permissionPhoneState" : {
+                    "request" : "always",
+                    "prompt" : "为保证您正常、安全地使用，需要获取设备识别码（部分手机提示为获取手机号码）使用权限，请允许。"
+                },
+                "minSdkVersion" : 22,
+                "targetSdkVersion" : 29
+            },
+            /* ios打包配置 */
+            "ios" : {
+                "pushRegisterMode" : "manual"
+            },
+            /* SDK配置 */
+            "sdkConfigs" : {
+                "ad" : {},
+                "geolocation" : {
+                    "baidu" : {
+                        "__platform__" : [ "ios", "android" ],
+                        "appkey_ios" : "vVTmvcbT1QKF5prUbNysqKh5Nt38ixSC",
+                        "appkey_android" : "KL26g3s3V8zUMawkq4v0QZ4sVXOkpZ8l"
+                    }
+                }
+            }
+        },
+        "uniStatistics" : {
+            "enable" : true
+        },
+        "nvueLaunchMode" : ""
+    },
+    /* 快应用特有相关 */
+    "quickapp" : {},
+    /* 小程序特有相关 */
+    "mp-weixin" : {
+        "appid" : "touristappid",
+        "setting" : {
+            "urlCheck" : false,
+            "minified" : true
+        },
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : true
+        }
+    },
+    "mp-alipay" : {
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : false
+        }
+    },
+    "mp-baidu" : {
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : false
+        }
+    },
+    "mp-toutiao" : {
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : false
+        }
+    },
+    "uniStatistics" : {
+        "enable" : false
+    },
+    "h5" : {
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
+        },
+        "uniStatistics" : {
+            "enable" : true
+        },
+        "devServer" : {
+            "https" : true,
+            "key" : "/Users/jinshiye/Desktop/appSchSkinUni1/https/imac/localhost+3-key.pem",
+            "cert" : "/Users/jinshiye/Desktop/appSchSkinUni1/https/imac/localhost+3.pem"
+        },
+        "domain" : "http://jbsch-pb.zhuxue101.net",
+        "title" : "短信审核",
+        "router" : {
+            "base" : "./",
+            "mode" : "hash"
+        },
+        "sdkConfigs" : {
+            "maps" : {}
+        }
+    },
+    "mp-qq" : {
+        "uniStatistics" : {
+            "enable" : false
+        }
+    }
+}

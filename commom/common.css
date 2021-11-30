@@ -1,0 +1,166 @@
+/* 兼容服务端富文本样式 */
+.wave-line {/* 波浪线 */
+	background: url(@/static/images/bolang.svg) repeat-x 0 100%;
+	background-size: 20px auto;
+}
+/* 文字下标  点 */
+.dot-mark {
+	position: relative;
+}
+
+.dot-mark::before {
+	position: absolute;
+	top: 0.65em;
+	left: 0px;
+	width: 100%;
+	white-space: nowrap;
+	content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+	overflow: hidden;
+}
+
+/* 选择框  等悬浮样式 */
+ .tabs-fixed {
+ 	width: 100vw;
+ 	position: fixed;
+    /* background-color: #FFFFFF; */
+	background: #F0F0F0;
+ 	z-index: 10;
+ 	left: 0;
+ 	/* #ifndef APP-PLUS */
+ 	top: 44px;
+ 	/* #endif */
+ 	/* #ifdef APP-PLUS */
+ 	right: 3px;
+ 	/* #endif */
+ }
+ ::v-deep.segmented-control{
+ 	margin:7px 5px 0;
+ }
+ 
+ ::v-deep img{
+ 	max-width: 100%;
+ }
+ 
+ ::v-deep p{
+ 	word-break: break-all;
+ }
+ 	
+ .uni-list::before,.uni-list::after{
+ 		 height: 0;
+ }
+ 
+ /* 附件选择框样式*/
+ /* 选择框宽度*/
+ ::v-deep .itemImg{
+	 width: 88% !important;
+ }
+ .choose-file{
+	 margin-top: 15px;
+	 justify-content: space-between;
+	 display: flex;
+	 padding: 15px;
+	 padding-bottom: 20px !important;
+	 flex-direction: column;
+	 align-items: flex-start !important; 
+ }
+ .choose-file-text{
+	 display: flex;
+	 font-size: 14px;
+	 width: 88vw;
+	 color: #3F3F3F;
+	 height: 26px;
+	 align-items: center;
+	 margin-bottom:20px;
+ }
+ .file-des{
+	 font-size: 12px;
+	 color: #808080;
+ }
+/* 顶部选项卡 下拉样式 */
+::v-deep .uni-easyinput input{
+	font-size: 13px !important;
+	padding-left: 2px !important;
+}
+.mini-date{
+	display: flex;
+	align-items: center;
+}
+::v-deep .dy-date{
+	flex:1;
+	text-align: center;
+}
+::v-deep .mini-date .uni-input{
+	font-size: 12px !important;
+	padding: 0 !important;
+}
+::v-deep  .content-clear-icon{
+	padding: 0px 3px 0 0 !important;
+	font-size: 13px !important;
+}
+/* 点击list列表不变色 */
+::v-deep .uni-list-item--hover {background-color: white !important;}
+/* 顶部搜索输入框样式 */
+.search-box{
+	 display: flex;
+	 padding: 3px;
+ }
+ .search-button{
+	 width: 60px;
+	 margin-left: 5px;
+	 height: 35px;
+	 background-color: #00CFBD;
+	 border-color: #00CFBD;
+	 display: flex;
+	 align-items: center;
+	 justify-content: space-around
+ }
+ .uni-input.search-input{
+	 border-radius: 5px;
+ }
+ /* switch 样式 */
+ uni-switch .uni-switch-input {
+     height: 25px;
+ }
+ uni-switch .uni-switch-input:after, uni-switch .uni-switch-input:before {
+     height: 23px;
+ }
+ uni-switch .uni-switch-input:after {
+     width: 23px;
+ }
+ uni-switch .uni-switch-input.uni-switch-input-checked:after {
+     transform: translateX(28px);
+ }
+ /* 分割线 */
+ .line{
+ 	height: 1px;
+ 	background-color: #e5e5e5;
+ 	margin: 5px 0;
+ }
+ .line-green{
+ 	background-color: #00CFBD;
+ 	margin-bottom: 0.3125rem;
+ 	height: 1px;
+ }
+ .double-line{
+ 	height: 5px;
+ 	background-color: #e5e5e5;
+ 	margin: 5px 0;
+ }
+ 
+ ::v-deep .segmented-control__text {
+     font-size: 14px !important;
+ }
+ 
+ /* list列表 item 的padding */
+ ::v-deep .uni-list-item__container{
+	 padding:7px 15px 7px !important;
+ }
+ 
+ /* 暂无数据提示 */
+ .empty-list-trip{
+	 width: 100vw;
+	 font-size: 15px;
+	 text-align: center;
+	 margin-top: 15px;
+	 color: #939393;
+ }
