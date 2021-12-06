@@ -2,7 +2,7 @@
 	<view>
 		<view style="margin-top: 30px;text-align: center;">
 			<image style="width: 150px;height: 150px;" src="../../static/logo.png"></image>
-			<view>大学校园</view>
+			<view>短信审核</view>
 		</view>
 		<view style="height: 15px;background-color: #DCDFE6;margin-top: 30px;"></view>
 		<uni-list>

@@ -20,6 +20,7 @@
         "usingComponents" : true,
         "nvueStyleCompiler" : "uni-app",
         "compilerVersion" : 3,
+        "popGesture" : "none",
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
             "waiting" : true,
@@ -27,11 +28,7 @@
             "delay" : 0
         },
         /* 模块配置 */
-        "modules" : {
-            "VideoPlayer" : {},
-            "Webview-x5" : {},
-            "Geolocation" : {}
-        },
+        "modules" : {},
         /* 应用发布信息 */
         "distribute" : {
             /* android打包配置 */
@@ -61,7 +58,8 @@
                     "prompt" : "为保证您正常、安全地使用，需要获取设备识别码（部分手机提示为获取手机号码）使用权限，请允许。"
                 },
                 "minSdkVersion" : 22,
-                "targetSdkVersion" : 29
+                "targetSdkVersion" : 29,
+                "abiFilters" : [ "armeabi-v7a" ]
             },
             /* ios打包配置 */
             "ios" : {
