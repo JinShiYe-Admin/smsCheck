@@ -11,7 +11,7 @@ import {VueJsonp} from 'vue-jsonp'
 Vue.use(VueJsonp);
 //配置项开始
 const GLOBALDATA = {}; //参数对象 用于存全局公共参数
-const EnvKey = 4; //1:山东开发 2:广西开发 3:联测 4:云测 5:正式 6性能测试   
+const EnvKey = 5; //1:山东开发 2:广西开发 3:联测 4:云测 5:正式 6性能测试   
 Vue.prototype.APPORWECHAT = 1; //app为1，微信里面是2
 switch (EnvKey) {
 	case 1:

@@ -4,7 +4,8 @@
 			console.log('App Launch，app启动')
 		},
 		onShow: function() {
-			console.log('App Show，app展现在前台')
+			console.log('App Show，app展现在前台');
+			uni.$emit('pageOhshow',{});
 		},
 		onHide: function() {
 			console.log('App Hide，app不再展现在前台')

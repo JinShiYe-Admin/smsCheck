@@ -138,10 +138,6 @@
 		},
 		onLoad() {
 			_this = this;
-			// 添加监听，如果修改了头像，将左上角和个人中心的也对应修改
-			uni.$on('updateHeadImg', function(data) {
-				_this.$refs.mynavBar.upLoadImg();
-			})
 			this.tabbar = util.getMenu();
 			this.personInfo = util.getPersonal();
 			this.tabBarItem = util.getTabbarMenu();
@@ -158,7 +154,18 @@
 			this.getTypeList();
 			// 获取权限
 			this.getCheck();
+			// 
+			uni.$on('pageOhshow', function(data) {
+				_this.getPageList();
+			})
 		},
+		// onShow() {
+		// 	console.log('onShowonShowonShowonShow');
+		// 	this.getPageList();
+		// },
+		// onShow: function() {
+		// 	console.log('App Show，app展现在前台111111')
+		// },
 		methods: {
 			onBackPress(options){
 				return true;
@@ -362,28 +369,19 @@
 									area_code: "370000",
 									area_name: "山东省",
 									selectAll: 1,
-									childList: [{
-										area_code: "-1",
-										area_name: "全部"
-									}]
+									childList: []
 								});
 								this.showAreaList.push({
 									area_code: "420000",
 									area_name: "湖北省",
 									selectAll: 1,
-									childList: [{
-										area_code: "-1",
-										area_name: "全部"
-									}]
+									childList: []
 								});
 								this.showAreaList.push({
 									area_code: "460000",
 									area_name: "海南省",
 									selectAll: 1,
-									childList: [{
-										area_code: "-1",
-										area_name: "全部"
-									}]
+									childList: []
 								});
 								for (var i = 0; i < this.allAreaList.length; i++) {
 									let tempArea = this.allAreaList[i];
@@ -396,13 +394,14 @@
 											tempArea.selectAll = 1;
 											tempArea.childList = [{
 												area_code: "-1",
-												area_name: "全部"
+												area_name: "全部",
+												childList:[]
 											}];
 											this.showAreaList.push(tempArea);
 										}
 									}
 								}
-								// console.log('this.showAreaList:' + JSON.stringify(this.showAreaList));
+								console.log('this.showAreaList:' + JSON.stringify(this.showAreaList));
 							} else {
 								var tempArrayPro1 = []; //全选省份
 								var tempArrayCity1 = []; //全选城市
@@ -563,7 +562,7 @@
 										}
 									}
 								}
-								// console.log('this.showAreaListEEE:' + JSON.stringify(this.showAreaList));
+								console.log('this.showAreaListEEE:' + JSON.stringify(this.showAreaList));
 							}
 							// 将省份、非全选的城市、区县都塞值完毕，然后塞入全选的城市、区县
 							this.setCity();
@@ -585,11 +584,8 @@
 							tempArea.childList = [{
 								area_code: "-1",
 								area_name: "全部",
-								childList: [{
-									area_code: "-1",
-									area_name: "全部",
-									childList: {}
-								}]
+								selectAll:1,
+								childList: []
 							}];
 							return tempArea;
 						}
@@ -605,7 +601,9 @@
 							}
 							tempArea.childList = [{
 								area_code: "-1",
-								area_name: "全部"
+								area_name: "全部",
+								selectAll:1,
+								childList:[]
 							}];
 							return tempArea;
 						}
@@ -613,7 +611,9 @@
 						if (tempArea.area_code == code) {
 							tempArea.childList = [{
 								area_code: "-1",
-								area_name: "全部"
+								area_name: "全部",
+								selectAll:1,
+								childList:[]
 							}];
 							return tempArea;
 						}
@@ -624,13 +624,22 @@
 				for (var i = 0; i < this.showAreaList.length; i++) {
 					let tempProv = this.showAreaList[i];
 					if (tempProv.selectAll == 1) {
+						// if(tempProv.area_code == -1){
+							let tempM = {
+								area_code: "-1",
+								area_name: "全部",
+								selectAll:1,
+								childList:[]
+							}
+							tempProv.childList=[tempM];
+						// }
 						for (var a = 0; a < this.allAreaList.length; a++) {
 							let tempAllArea = this.allAreaList[a];
 
 							if (
-								tempAllArea.area_code.substr(0, 2).indexOf(tempProv.area_code.substr(0, 2)) != -1 &&
+								(tempAllArea.area_code.substr(0, 2).indexOf(tempProv.area_code.substr(0, 2)) != -1 &&
 								tempAllArea.area_code.substr(2, 2).indexOf("00") == -1 &&
-								tempAllArea.area_code.substr(4, 2).indexOf("00") != -1
+								tempAllArea.area_code.substr(4, 2).indexOf("00") != -1)
 							) {
 								if (
 									tempAllArea.area_name.indexOf("北京") != -1 ||
@@ -643,42 +652,55 @@
 								tempAllArea.selectAll = 1;
 								tempAllArea.childList = [{
 									area_code: "-1",
-									area_name: "全部"
+									area_name: "全部",
+									selectAll:1,
+									childList:[]
 								}];
 								tempProv.childList.push(tempAllArea);
 							}
 						}
 					}
 				}
-				console.log('this.showAreaList111:' + JSON.stringify(this.showAreaList));
+				// console.log('this.showAreaList111:' + JSON.stringify(this.showAreaList));
 				this.setArea();
 			},
 			setArea() {
 				for (var i = 0; i < this.showAreaList.length; i++) {
 					let tempProv = this.showAreaList[i];
-					if (tempProv.selectAll == 1) {
+					// if (tempProv.selectAll == 1) {
 						for (var a = 0; a < tempProv.childList.length; a++) {
 							let tempCity = tempProv.childList[a];
 							if (tempCity.selectAll == 1) {
+								// if(tempCity.area_code == -1){
+									let tempM = {
+										area_code: "-1",
+										area_name: "全部",
+										selectAll:1,
+										childList:[]
+									}
+									tempCity.childList =[tempM];
+								// }
 								for (var b = 0; b < this.allAreaList.length; b++) {
 									let tempAllArea = this.allAreaList[b];
 									if (
-										tempAllArea.area_code.substr(0, 4).indexOf(tempCity.area_code.substr(0, 4)) != -
-										1 &&
-										tempAllArea.area_code.substr(4, 2).indexOf("00") == -1
+										(tempAllArea.area_code.substr(0, 4).indexOf(tempCity.area_code.substr(0, 4)) != -1 &&
+										tempAllArea.area_code.substr(4, 2).indexOf("00") == -1)
 									) {
 										tempAllArea.selectAll = 1;
 										tempAllArea.childList = [{
 											area_code: "-1",
-											area_name: "全部"
+											area_name: "全部",
+											selectAll:1,
+											childList:[]
 										}];
 										tempCity.childList.push(tempAllArea);
 									}
 								}
 							}
 						}
-					}
+					// }
 				}
+				// console.log('this.showAreaList:'+JSON.stringify(this.showAreaList));
 				if (this.showAreaList.length == 0) {
 					this.showToast('当前登录用户尚未分配服务单位');
 				} else {
@@ -687,12 +709,14 @@
 					this.multiAreaList.splice(2, 1, this.showAreaList[0].childList[0].childList);
 					this.getSchCode();
 				}
-				// console.log('this.multiAreaList:' + JSON.stringify(this.multiAreaList));
 			},
 			// 计算要获取学校的省市区代码
 			getSchCode() {
+				// console.log('this.multiAreaList:' + JSON.stringify(this.multiAreaList));
+				// console.log('this.multiIndex:'+JSON.stringify(this.multiIndex));
 				// 是否区县
 				let tempCoty = this.multiAreaList[2][this.multiIndex[2]];
+				console.log('tempCoty:'+JSON.stringify(tempCoty));
 				if (tempCoty.area_code == -1) {
 					let tempCity = this.multiAreaList[1][this.multiIndex[1]];
 					if (tempCity.area_code == -1) {
@@ -706,7 +730,7 @@
 				}
 			},
 			getSch(code, flag, selectAll) {
-				console.log('selectAllselectAllselectAllselectAll:' + selectAll);
+				// console.log('selectAllselectAllselectAllselectAll:' + selectAll);
 				let comData = {
 					area_code: code,
 					index_code: this.tabBarItem.access.split('#')[1],
@@ -717,7 +741,8 @@
 						this.schList = [{
 							unit_name: '全部',
 							area_code: '-1',
-							unit_code: '-1'
+							unit_code: '-1',
+							selectAll:1,
 						}];
 						// if(this.getArea.is_servsch == 1){
 						// 	this.schList.push({
@@ -726,6 +751,7 @@
 						// 		unit_code: '100000'
 						// 	})
 						// }
+						this.schIndex = 0;
 						if (selectAll == 0) {
 							for (var i = 0; i < data.data.list.length; i++) {
 								let tempSch = data.data.list[i];
@@ -827,12 +853,15 @@
 								}
 							}
 						}
+						if(data.data.list.length == 0){
+							this.showToast("暂无待审信息");
+						}
 						// if (this.flagRef == 0) {
 						// 	if (data.data.list.length == 0) {
 						// 		this.showToast('暂无数据');
 						// 	}
 						// 	this.pageArray = [].concat(data.data.list);
-						// 	uni.stopPullDownRefresh();
+							uni.stopPullDownRefresh();
 						// } else {
 						// 	this.pageArray = this.pageArray.concat(data.data.list);
 						// }
