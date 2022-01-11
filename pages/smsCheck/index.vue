@@ -35,6 +35,9 @@
 									{{model.send_time}}
 								</uni-col>
 							</uni-row>
+							<mote-lines-divide :line="1" expandText="展开" foldHint="收起">
+							    {{model.stuMsgStr}}
+							</mote-lines-divide>
 							<view class="card-line"></view>
 							<view class="msg-content" v-html="model.msg_content"></view>
 							<view>
@@ -86,6 +89,7 @@
 <script>
 	import util from '../../commom/util.js';
 	import mynavBar from '@/components/my-navBar/m-navBar';
+	import MoteLinesDivide from "@/components/mote-lines-divide/mote-lines-divide"
 	let _this;
 	export default {
 		data() {
@@ -134,7 +138,8 @@
 			}
 		},
 		components: {
-			mynavBar
+			mynavBar,
+			MoteLinesDivide
 		},
 		onLoad() {
 			_this = this;
@@ -851,6 +856,18 @@
 								if (tempM.msg_type == tempS.msg_type) {
 									tempM.msg_type_name = tempS.msg_type_name;
 								}
+							}
+							let tempStuArray = [];
+							for (var a = 0; a < tempM.detail_list.length; a++) {
+								let tempStu = tempM.detail_list[a];
+								tempStuArray.push(tempStu.grd_name+tempStu.cls_name+tempStu.stu_name);
+							}
+							if(tempM.msg_type == '1-2'){//年级
+								tempM.stuMsgStr = '年级：'+tempStuArray.join(',');
+							}else if(tempM.msg_type == '1-3'||tempM.msg_type == '1-4'){//班级
+								tempM.stuMsgStr = '班级：'+tempStuArray.join(',');
+							}else if(tempM.msg_type == '1-5'||tempM.msg_type == '1-6'){//学生
+								tempM.stuMsgStr = '学生：'+tempStuArray.join(',');
 							}
 						}
 						if(data.data.list.length == 0){
